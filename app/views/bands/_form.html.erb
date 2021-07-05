@@ -1,0 +1,20 @@
+<%=form_with model: @band, local: true do |form| %>
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+    
+    <div class="field">
+      <%= form.label :genre %>
+      <%= form.select :genre_id, @genres.map {|g| [g.name, g.id]} %>
+    </div>
+    
+    <div class="field">
+      <%= form.label :description %>
+      <%= form.text_area :description %>
+    </div>
+    
+    <div class="field">
+      <%= form.submit %>
+    </div>
+    <%end %>
