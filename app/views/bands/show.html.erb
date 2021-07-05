@@ -1,0 +1,8 @@
+<h1><%=@band.name%></h1>
+<h2><%=@band.genre.name%></h2>
+<p><%=@band.description%></p>
+<%= link_to "Back", bands_path%>
+<div class="button-container">
+  <%= button_to "Delete Band", {action: "destroy", id: @band.id}, {method: :delete, class: "btn danger", data: {confirm: "Are you sure?"}} %>
+  <%= button_to "Edit Band", {action: "edit", id: @band.id}, {method: :get, class: "btn warning"} %>
+</div>

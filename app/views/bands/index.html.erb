@@ -1,0 +1,12 @@
+<main id="bands-index">
+  <h1>All the bands!</h1>
+  <section class="card-deck">
+    <%@bands.each do |band| %>
+      <div class="card">
+        <h5><%= band.name%></h5>
+        <p><%= band.description%></p>
+        <%=link_to "See More", band_path(band.id)%>
+      </div> 
+    <%end%>
+  </section>
+</main>
