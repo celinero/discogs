@@ -1,5 +1,5 @@
 class BandsController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  
   before_action :set_band, only: [:show, :destroy, :edit, :update]
   before_action :set_genres, only: [:new, :edit]
   

@@ -1,40 +1,21 @@
 <h1> Create a new band </h1>
+<%=form_with model: @band, local: true do |form| %>
+<div class="field">
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+</div>
 
-<% if @band.errors.any? %>
-<h3><%pluralize(@band.errors.count, "error")%> prevented Band being saved</h3>
-<%end%>
+<div class="field">
+  <%= form.label :genre %>
+  <%= form.select :genre_id, @genres.map {|g| [g.name, g.id]} %>
+</div>
 
-<form action="<%=bands_path%>" method="POST">
-  <div class="field">
-    <label>Name</label>
-    <input type="text" name="band[name]">
-    
-    <%if @band&.errors&.messages[:name]&.length > 0 %>
-    <p class="error-text"><%= "Name " + @band&.errors&.messages[:name].join(", ")%></p>
-    <%end%>
-  </div>
+<div class="field">
+  <%= form.label :description %>
+  <%= form.text_area :description %>
+</div>
 
-
-
-  <div class="field">
-    <label>Genre</label>
-    <select name="band[genre_id]">
-      <%@genres.each do |genre| %>
-        <option value=<%=genre.id%>><%=genre.name%></option>
-      <%end%>
-    </select>
-  </div>
-
-  <div class="field">
-    <label>Description</label>
-    <textarea name="band[description]"></textarea>
-
-     <%if @band.errors.any?%>
-    <p class="error-text"><%= "Description " + @band&.errors&.messages[:description].join(", ")%></p>
-    <%end%>
-
-  </div>
-
-  <input type="Submit" value="Create a Band!">
-
-</form>
+<div class="field">
+  <%= form.submit %>
+</div>
+<%end %>
